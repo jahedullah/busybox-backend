@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: busybox-backend
-          image: jahedulislam/busybox-backend-amd64:1.0
+          image: jahedulislam/busybox-backend-amd64:1.1
           ports:
             - containerPort: 8080
 
