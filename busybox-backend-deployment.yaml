@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: busybox-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: busybox-backend
+
+    spec:
+      containers:
+        - name: busybox-backend
+          image: busybox-backend:1.0
+          ports:
+            - containerPort: 8080
+
+          env:
+            - name: DB_HOST
+              value: mysql
+            - name: DB_NAME
+              value: jahedulBusybox
+            - name: DB_USERNAME
+              value: root
+            - name: DB_PASSWORD
+              value: root
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: busybox-backend-service
+spec:
+  selector:
+    app: busybox-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: "TCP"
+  type: NodePort

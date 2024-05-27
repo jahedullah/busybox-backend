@@ -1,4 +1,4 @@
 FROM openjdk:22
 EXPOSE 8080
-ADD target/busybox-frontend.jar busybox-backend.jar
+ADD target/busybox-backend-0.0.1-SNAPSHOT.jar busybox-backend.jar
 ENTRYPOINT ["java", "-jar","/busybox-backend.jar"]
