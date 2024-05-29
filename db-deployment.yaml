@@ -39,13 +39,13 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql:5.7
+          image: mysql:8.3.0
           imagePullPolicy: IfNotPresent
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: root
             - name: MYSQL_DATABASE # Setting Database Name from a 'ConfigMap'
-              value: jahedulBusybox
+              value: busyBox
           ports:
             - containerPort: 3306
               name: mysql
