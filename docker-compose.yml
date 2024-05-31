@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  busybox-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Tagging the image with the specified name
+      tags:
+      - "jahedulislam/busybox-backend-amd64"
