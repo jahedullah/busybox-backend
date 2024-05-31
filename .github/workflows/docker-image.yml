@@ -30,5 +30,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
       - name: Push the image to docker hub
-        with:
-          run: docker push jahedulislam/busybox-backend-amd64:1.0
+        run: docker push jahedulislam/busybox-backend-amd64:1.0
