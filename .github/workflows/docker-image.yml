@@ -25,6 +25,8 @@ jobs:
           
     - name: List all Docker images
       run: docker images
+    - name: Push the image to docker hub
+      run: docker push jahedulislam/busybox-backend-amd64:1.0
 
   push_to_registry:
 
