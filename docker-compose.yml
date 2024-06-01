@@ -7,4 +7,4 @@ services:
       dockerfile: Dockerfile
       # Tagging the image with the specified name
       tags:
-      - "jahedulislam/busybox-backend-amd64"
+      - "jahedulislam/busybox-backend-amd64:1.0"
