@@ -4,6 +4,7 @@ spring:
     url: jdbc:mysql://${DB_HOST}/${DB_NAME}?useSSL=false
     hikari:
       initialization-fail-timeout: 0
+      connection-timeout: 100000
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
