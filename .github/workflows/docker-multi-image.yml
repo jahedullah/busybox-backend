@@ -1,4 +1,4 @@
-name: Build Arm Based Container Image
+name: Build Multi Arch Based Container Image
 
 on:
   push:
