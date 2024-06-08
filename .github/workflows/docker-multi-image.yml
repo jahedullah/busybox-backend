@@ -10,28 +10,33 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: install buildx
-      id: buildx
-      uses: crazy-max/ghaction-docker-buildx@v1
-      with:
-        version: latest
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
 
-    
     - name: Login to Docker registry
       uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: jahedulislam/busybox-backend:latest
+
     
-    - name: build the image
-      run: |
-        docker buildx build \
-          --tag jahedulislam/busybox-backend:latest \
-          --platform linux/amd64,linux/arm/v7,linux/arm64 .
+    
 
