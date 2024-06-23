@@ -21,13 +21,25 @@ spec:
 
           env:
             - name: DB_HOST
-              value: mysql
+              valueFrom:
+                configMapKeyRef:
+                  key: host
+                  name: db-config
             - name: DB_NAME
-              value: busyBox
+              valueFrom:
+                configMapKeyRef:
+                  key: dbName
+                  name: db-config
             - name: DB_USERNAME
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mysql-secrets
             - name: DB_PASSWORD
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mysql-secrets
 
 ---
 

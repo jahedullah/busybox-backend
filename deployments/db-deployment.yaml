@@ -43,9 +43,15 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mysql-secrets
             - name: MYSQL_DATABASE # Setting Database Name from a 'ConfigMap'
-              value: busyBox
+              valueFrom:
+                configMapKeyRef:
+                  key: dbName
+                  name: db-config
           ports:
             - containerPort: 3306
               name: mysql
