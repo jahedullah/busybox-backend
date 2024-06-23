@@ -9,6 +9,6 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
       protocol: {{ .Values.service.protocol }}
-      NodePort: {{ .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
   selector:
     app: {{ .Values.service.app }}
