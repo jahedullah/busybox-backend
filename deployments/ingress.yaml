@@ -9,7 +9,7 @@ spec:
     - host: busybox.local
       http:
         paths:
-          - path: /busyBox/api/v1
+          - path: /busybox/api/v1
             pathType: Prefix
             backend:
               service:
