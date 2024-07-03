@@ -12,7 +12,7 @@ public class SecurityConfiguration {
   public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurer() {
       public void addCorsMappings(final CorsRegistry registry) {
-        registry.addMapping("/**").allowedHeaders("*").allowedMethods("*");
+        registry.addMapping("/**").allowedHeaders("*").allowedMethods("*").allowedOrigins("*");
       }
     };
   }
