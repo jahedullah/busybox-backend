@@ -15,7 +15,7 @@ public class SecurityConfiguration {
   public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurer() {
       public void addCorsMappings(final CorsRegistry registry) {
-        registry.addMapping("/**").allowedHeaders("*").allowedMethods("*").allowedOrigins("*");
+        registry.addMapping("/**").allowedHeaders("*").allowedMethods("*").allowedOrigins("http://192.168.105.4:31000/");
       }
     };
   }
@@ -25,7 +25,7 @@ public class SecurityConfiguration {
     CorsConfiguration corsConfiguration = new CorsConfiguration();
     corsConfiguration.addAllowedMethod("*");
     corsConfiguration.addAllowedOrigin("*");
-    corsConfiguration.addAllowedHeader("*");
+    corsConfiguration.addAllowedHeader("http://192.168.105.4:31000/");
     corsConfiguration.setAllowCredentials(true);
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
