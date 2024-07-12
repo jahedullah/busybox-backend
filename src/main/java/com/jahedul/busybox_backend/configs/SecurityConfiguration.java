@@ -15,17 +15,22 @@ public class SecurityConfiguration {
   public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurer() {
       public void addCorsMappings(final CorsRegistry registry) {
-        registry.addMapping("/**").allowedHeaders("*").allowedMethods("*").allowedOrigins("http://192.168.105.4:31000/");
+        registry.addMapping("/**")
+            .allowedHeaders("*")
+            .allowedMethods("*")
+            .allowedOrigins("http://192.168.105.4:31000/",
+                "http://busybox-backend-service.default.svc.cluster.local:8080/");
       }
     };
   }
 
   @Bean
-  public CorsConfigurationSource corsConfigurationSource(){
+  public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration corsConfiguration = new CorsConfiguration();
     corsConfiguration.addAllowedMethod("*");
-    corsConfiguration.addAllowedOrigin("*");
-    corsConfiguration.addAllowedHeader("http://192.168.105.4:31000/");
+    corsConfiguration.addAllowedOrigin("http://busybox-backend-service.default.svc.cluster.local:8080/");
+    corsConfiguration.addAllowedOrigin("http://192.168.105.4:31000/");
+    corsConfiguration.addAllowedHeader("*");
     corsConfiguration.setAllowCredentials(true);
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
