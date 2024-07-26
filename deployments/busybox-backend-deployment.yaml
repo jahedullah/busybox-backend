@@ -16,6 +16,7 @@ spec:
       containers:
         - name: busybox-backend
           image: jahedulislam/busybox-backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
 
@@ -54,4 +55,5 @@ spec:
     - port: 8080
       targetPort: 8080
       protocol: "TCP"
-  type: ClusterIP
+      nodePort: 32500
+  type: NodePort

@@ -19,7 +19,8 @@ public class SecurityConfiguration {
             .allowedHeaders("*")
             .allowedMethods("*")
             .allowedOrigins("http://192.168.105.4:31000/",
-                "http://busybox-backend-service.default.svc.cluster.local:8080/", "http://34.69.68.24:31000/","http://localhost:4200/");
+                "http://busybox-backend-service.default.svc.cluster.local:8080/", "http://34.69.68.24:31000/",
+                "http://localhost:4200/", "http://localhost:8001/", "http://localhost:8001");
       }
     };
   }
@@ -32,6 +33,8 @@ public class SecurityConfiguration {
     corsConfiguration.addAllowedOrigin("http://192.168.105.4:31000/");
     corsConfiguration.addAllowedOrigin("http://34.69.68.24:31000/");
     corsConfiguration.addAllowedOrigin("http://localhost:4200/");
+    corsConfiguration.addAllowedOrigin("http://localhost:8001/");
+    corsConfiguration.addAllowedOrigin("http://localhost:8001");
     corsConfiguration.addAllowedHeader("*");
     corsConfiguration.setAllowCredentials(true);
 
