@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: busybox-ingress
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Change this to your actual issuer
+    cert-manager.io/cluster-issuer: "selfsigned-issuer" # Change this to your actual issuer
 spec:
   ingressClassName: traefik
   tls:
