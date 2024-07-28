@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: busybox-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Change this to your actual issuer
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - prod.busybox.space
+      secretName: busybox-tls-secret # Ensure you have this secret created
+  rules:
+    - host: prod.busybox.space
+      http:
+        paths:
+          - path: /busyBox
+            pathType: Prefix
+            backend:
+              service:
+                name: busybox-backend-service
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
