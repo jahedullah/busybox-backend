@@ -3,14 +3,32 @@ kind: Ingress
 metadata:
   name: busybox-ingress
   annotations:
-    cert-manager.io/cluster-issuer: "selfsigned-issuer" # Change this to your actual issuer
+    cert-manager.io/cluster-issuer: "selfsigned-issuer" # Ensure this matches your actual issuer
 spec:
   ingressClassName: traefik
   tls:
     - hosts:
+        - my.busybox.space
         - prod.busybox.space
-      secretName: busybox-tls-secret # Ensure you have this secret created
+      secretName: busybox-tls-secret # Ensure this secret is created and contains the TLS certificate
   rules:
+    - host: my.busybox.space
+      http:
+        paths:
+          - path: /busyBox
+            pathType: Prefix
+            backend:
+              service:
+                name: busybox-backend-service
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
     - host: prod.busybox.space
       http:
         paths:

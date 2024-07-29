@@ -1,0 +1,6 @@
+creation_rules:
+  # the path regex matches the directory and under this path pattern it will modify the secrets. If the path matches then it will use the following key attached
+  # with it. Lets say i want to encrypt the secret.yaml file under the prod-cert directory and if it matches the path then it will use that key.
+  # If no rule matches with the path-regex for the mentioned file than it will not work.
+  - path_regex: .*/prod-cert/.*
+    gcp_kms: projects/busybox-427706/locations/global/keyRings/busybox/cryptoKeys/secret-key
